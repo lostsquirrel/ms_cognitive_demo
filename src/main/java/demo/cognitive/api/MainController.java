@@ -21,10 +21,9 @@ public class MainController {
     @Autowired
     private EmotionService emotionService;
 
-
-    @RequestMapping("/emotion")
+    @RequestMapping("/pic")
     @ResponseBody
-    Object emotion(@RequestParam("url") String url) {
+    public Object emotion(@RequestParam("url") String url) {
         String key = Base64Convertor.toString36Base(url.hashCode());
         Object check = emotionService.check(key, url);
         return check;
