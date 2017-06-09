@@ -35,4 +35,4 @@ package:
 	git reset --hard && git pull origin master
 	cp -rf $(CONFIG_DIR)/* src/main/resources
 	mvn clean package
-	cp -f target/$(PROJECT_NAME)-$(VERSION) .
+	cp -f target/$(PROJECT_NAME)-$(VERSION).jar .
