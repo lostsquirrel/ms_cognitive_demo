@@ -32,7 +32,7 @@ static:
 	sudo cp -rf $(STATIC_SOURCE) $(STATIC_DEPLOY)
 
 java-update:
-    git reset --hard && git pull origin master
+	git reset --hard && git pull origin master
 
 config: java-update
 	cp -rf $(CONFIG_DIR)/* src/main/resources
