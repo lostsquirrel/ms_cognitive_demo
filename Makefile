@@ -31,8 +31,15 @@ static-update:
 static:
 	sudo cp -rf $(STATIC_SOURCE) $(STATIC_DEPLOY)
 
-package:
-	git reset --hard && git pull origin master
+java-update:
+    git reset --hard && git pull origin master
+
+config: java-update
 	cp -rf $(CONFIG_DIR)/* src/main/resources
+
+
+package: config
 	mvn clean package
+
+copy: package
 	cp -f target/$(PROJECT_NAME)-$(VERSION).jar .
