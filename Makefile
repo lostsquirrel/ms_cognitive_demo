@@ -48,3 +48,4 @@ copy: package
         cp -f target/$(PROJECT_NAME)-$(VERSION).jar .
 
 .PHONY: clean pull push build up static-update static java-update config package copy
+

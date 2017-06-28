@@ -46,9 +46,9 @@ public class FileUploadController {
         try {
             String filename = storageService.store(file);
             String url = String.format("http://%s/%s", baseUrl, filename);
-            String key = Base64Convertor.toString36Base(url.hashCode());
-
-            res.put("data", emotionService.check(key, url));
+//            String key = Base64Convertor.toString36Base(url.hashCode());
+//
+//            res.put("data", emotionService.check(key, url));
             res.put("url", url);
         } catch (IOException e) {
             e.printStackTrace();
