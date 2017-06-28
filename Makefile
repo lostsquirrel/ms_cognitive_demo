@@ -12,40 +12,40 @@ export VERSION
 export VERSIONED_IMAGE
 
 clean:
-        docker-compose down
-        docker-compose rm --force
+	docker-compose down
+	docker-compose rm --force
 
 pull:
-        docker pull $(VERSIONED_IMAGE)
+	docker pull $(VERSIONED_IMAGE)
 
 push:
-        docker push $(VERSIONED_IMAGE)
+	docker push $(VERSIONED_IMAGE)
 
 build:
-        docker build --no-cache --build-arg VERSION=$(VERSION) \
-        -t $(VERSIONED_IMAGE) .
+	docker build --no-cache --build-arg VERSION=$(VERSION) \
+	-t $(VERSIONED_IMAGE) .
 
 up:
-        docker-compose up -d
+	docker-compose up -d
 
 static-update:
-        cd $(STATIC_SOURCE) && git pull
+	cd $(STATIC_SOURCE) && git pull
 
 static:
-        sudo cp -rf $(STATIC_SOURCE) $(STATIC_DEPLOY)
+	sudo cp -rf $(STATIC_SOURCE) $(STATIC_DEPLOY)
 
 java-update:
-        git reset --hard && git pull --all
+	git reset --hard && git pull --all
 
 config: java-update
-        cp -rf $(CONFIG_DIR)/* src/main/resources
+	cp -rf $(CONFIG_DIR)/* src/main/resources
 
 
 package: config
-        mvn clean package -DskipTests=true
+	mvn clean package -DskipTests=true
 
 copy: package
-        cp -f target/$(PROJECT_NAME)-$(VERSION).jar .
+	cp -f target/$(PROJECT_NAME)-$(VERSION).jar .
 
 .PHONY: clean pull push build up static-update static java-update config package copy
 
