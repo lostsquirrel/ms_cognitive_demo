@@ -5,7 +5,7 @@ services:
         networks:
             - frontend
     worker:
-        image: registry.cn-hangzhou.aliyuncs.com/lisong/cognitive:$VERSION
+        image: registry.cn-hangzhou.aliyuncs.com/lisong/ms-cognitive-demo:$VERSION
         networks:
             - frontend
         depends_on:
